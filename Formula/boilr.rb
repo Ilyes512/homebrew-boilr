@@ -5,21 +5,21 @@
 class Boilr < Formula
   desc "Boilerplate template manager that generates files or directories from template repositories"
   homepage "https://github.com/Ilyes512/boilr"
-  version "0.5.0-rc.1"
+  version "0.5.1"
   license "Apache-2.0"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/Ilyes512/boilr/releases/download/0.5.0-rc.1/boilr_Darwin_arm64.tar.gz"
-      sha256 "472905f0af3a181b4eceaae7ffe21786dc9463454db7a70f12d0f53d501a0eb2"
+    if Hardware::CPU.intel?
+      url "https://github.com/Ilyes512/boilr/releases/download/0.5.1/boilr_Darwin_x86_64.tar.gz"
+      sha256 "9c3c987d34858d631132f1489f38ca1d8b4003e47e3d37642a5960551e4a57cf"
 
       def install
         bin.install "boilr"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/Ilyes512/boilr/releases/download/0.5.0-rc.1/boilr_Darwin_x86_64.tar.gz"
-      sha256 "a34000813245bc6cc17b3e7dc8110cbba8f3c0a148f7dc1359a4d41e15708368"
+    if Hardware::CPU.arm?
+      url "https://github.com/Ilyes512/boilr/releases/download/0.5.1/boilr_Darwin_arm64.tar.gz"
+      sha256 "997ea7ecd2772fd5b59365806b0e09e6c6736e4b5a82956598b9af6fc1eafe6a"
 
       def install
         bin.install "boilr"
@@ -29,11 +29,13 @@ class Boilr < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/Ilyes512/boilr/releases/download/0.5.0-rc.1/boilr_Linux_x86_64.tar.gz"
-      sha256 "e108b3d9e29f496ed336f8130f6dd86248df6f4e1e941014a770eb640f7ec6d3"
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/Ilyes512/boilr/releases/download/0.5.1/boilr_Linux_x86_64.tar.gz"
+        sha256 "fd59b620afafdfd550d3b51187fd5fd46488da06f1104c16e0c4a67ed192e710"
 
-      def install
-        bin.install "boilr"
+        def install
+          bin.install "boilr"
+        end
       end
     end
   end
