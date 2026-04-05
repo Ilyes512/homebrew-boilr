@@ -5,37 +5,34 @@
 class Boilr < Formula
   desc "Boilerplate template manager that generates files or directories from template repositories"
   homepage "https://github.com/Ilyes512/boilr"
-  version "0.5.1"
+  version "1.0.0"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/Ilyes512/boilr/releases/download/0.5.1/boilr_Darwin_x86_64.tar.gz"
-      sha256 "9c3c987d34858d631132f1489f38ca1d8b4003e47e3d37642a5960551e4a57cf"
+      url "https://github.com/Ilyes512/boilr/releases/download/v1.0.0/boilr_Darwin_x86_64.tar.gz"
+      sha256 "e933a695facb4c745b211653f0cae7366aa198f265874b4c8655d80d18225be0"
 
-      def install
+      define_method(:install) do
         bin.install "boilr"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/Ilyes512/boilr/releases/download/0.5.1/boilr_Darwin_arm64.tar.gz"
-      sha256 "997ea7ecd2772fd5b59365806b0e09e6c6736e4b5a82956598b9af6fc1eafe6a"
+      url "https://github.com/Ilyes512/boilr/releases/download/v1.0.0/boilr_Darwin_arm64.tar.gz"
+      sha256 "8547ba9be857cdb6769af34718b40bf5c948215c25d0d1fdf655fe0c12a9cffa"
 
-      def install
+      define_method(:install) do
         bin.install "boilr"
       end
     end
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/Ilyes512/boilr/releases/download/0.5.1/boilr_Linux_x86_64.tar.gz"
-        sha256 "fd59b620afafdfd550d3b51187fd5fd46488da06f1104c16e0c4a67ed192e710"
-
-        def install
-          bin.install "boilr"
-        end
+    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+      url "https://github.com/Ilyes512/boilr/releases/download/v1.0.0/boilr_Linux_x86_64.tar.gz"
+      sha256 "a9ffbc90b6ae0fb2d4e0c70f47558d978864149550cdbd98bed8ab3fc81909eb"
+      define_method(:install) do
+        bin.install "boilr"
       end
     end
   end
